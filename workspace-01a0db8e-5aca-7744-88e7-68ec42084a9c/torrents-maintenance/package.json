@@ -1,0 +1,19 @@
+{
+  "name": "torrents-maintenance",
+  "version": "1.0.0",
+  "description": "Mantenimiento, limpieza, enriquecimiento y deduplicación de la tabla `torrents` en Supabase (para GitHub Actions)",
+  "private": true,
+  "type": "module",
+  "main": "maintenance.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node maintenance.js",
+    "dry": "DRY_RUN=true node maintenance.js",
+    "test": "node maintenance.js --self-test"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  }
+}
