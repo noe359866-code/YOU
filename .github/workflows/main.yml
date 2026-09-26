@@ -1,10 +1,9 @@
-name: Mantenimiento de Torrents
+name: Ejecutar Tarea
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # automático: diario 06:00 UTC (00:00 hora Guatemala)
-
-  workflow_dispatch:      # ← ESTO activa el botón "Run workflow" manual
+    - cron: '0 6 * * *'   # Automático: diario 06:00 UTC (00:00 hora Guatemala)
+  workflow_dispatch:      # Activa el botón "Run workflow" manual
     inputs:
       dry_run:
         description: 'Simular sin eliminar ni modificar datos (DRY_RUN)'
@@ -18,3 +17,17 @@ on:
         description: 'Ejecutar solo estos pasos (ej: 1,2,3). Vacío = los 6'
         type: string
         default: ''
+
+jobs:
+  run-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Reemplaza o adapta este paso según lo que ejecute tu workflow
+      - name: Ejecutar script principal
+        run: |
+          echo "Ejecutando script..."
+          # Ejemplo de cómo usar los inputs:
+          # python script.py --dry-run ${{ inputs.dry_run }}
