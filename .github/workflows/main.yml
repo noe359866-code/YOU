@@ -1,0 +1,20 @@
+name: Mantenimiento de Torrents
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # automático: diario 06:00 UTC (00:00 hora Guatemala)
+
+  workflow_dispatch:      # ← ESTO activa el botón "Run workflow" manual
+    inputs:
+      dry_run:
+        description: 'Simular sin eliminar ni modificar datos (DRY_RUN)'
+        type: boolean
+        default: false
+      max_lookups:
+        description: 'Máximo de llamadas a APIs externas (AniList/Kitsu/TVMaze/IMDb/TMDB)'
+        type: string
+        default: '400'
+      steps_filter:
+        description: 'Ejecutar solo estos pasos (ej: 1,2,3). Vacío = los 6'
+        type: string
+        default: ''
